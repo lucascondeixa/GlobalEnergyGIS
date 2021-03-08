@@ -16,8 +16,8 @@ function makewindera5(; year=2018, windatlas_only=true)
     println("Creating HDF5 file:  $filename")
     h5open(filename, "w") do file 
         group = file["/"]
-        dataset_wind = d_create(group, "wind", datatype(Float32), dataspace(hours,gridsize...), "chunk", (hours,16,16), "blosc", 3)
-        dataset_meanwind = d_create(group, "meanwind", datatype(Float32), dataspace(gridsize...), "chunk", gridsize, "blosc", 3)
+        dataset_wind = h5d_create(group, "wind", datatype(Float32), dataspace(hours,gridsize...), "chunk", (hours,16,16), "blosc", 3)
+        dataset_meanwind = h5d_create(group, "meanwind", datatype(Float32), dataspace(gridsize...), "chunk", gridsize, "blosc", 3)
 
         totalwind = zeros(gridsize)
         hour = 1
